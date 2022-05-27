@@ -449,11 +449,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Admin\\Desktop\\Programowanie c++\\Projekt_PO\\Projekt.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Programowanie c++\\Projekt_PO\\Projekt.csproj",
       "projectName": "Projekt",
-      "projectPath": "c:\\Users\\Admin\\Desktop\\Programowanie c++\\Projekt_PO\\Projekt.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Programowanie c++\\Projekt_PO\\Projekt.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Admin\\Desktop\\Programowanie c++\\Projekt_PO\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Programowanie c++\\Projekt_PO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
