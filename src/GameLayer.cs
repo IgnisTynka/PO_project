@@ -9,8 +9,8 @@ class GameLayer : Layer {
     public GameLayer() {
         _player1 = new Player();
         _player2 = new Player();
-        _playerSprite1 = new PlayerSprite(_player1, true);
-        _playerSprite2 = new PlayerSprite(_player2, false);
+        _playerSprite1 = new PlayerUI(_player1, true);
+        _playerSprite2 = new PlayerUI(_player2, false);
         _board = new Board(_player1, _player2, new Vector2f(360, 113));
         _background = new Sprite(new Texture("assets/textures/Background.png"));
     }
@@ -33,8 +33,8 @@ class GameLayer : Layer {
 
     private Player _player1;
     private Player _player2;
-    private PlayerSprite _playerSprite1;
-    private PlayerSprite _playerSprite2;
+    private PlayerUI _playerSprite1;
+    private PlayerUI _playerSprite2;
     private Board _board;
     private Sprite _background;
 }
