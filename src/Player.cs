@@ -2,8 +2,9 @@ namespace Projekt;
 
 class Player {
 
-    public Player() {
-        Name = "player";
+    public Player(string name) {
+        Lose = false;
+        Name = name;
         MaxHealth = 50;
         Health = 50;
 
@@ -30,6 +31,7 @@ class Player {
         Health -= damage;
         if (Health < 0) {
             Health = 0;
+            Lose = true;
         }
     }
 
@@ -40,7 +42,7 @@ class Player {
         Runes[type] = Runes[type] + ammount < MaxRunes[type] ? Runes[type] + ammount : MaxRunes[type];
     }
 
-
+    public bool Lose { get; protected set; }
     public string Name { get; protected set; }
     public int Health { get; protected set; }
     public int MaxHealth { get; protected set; }

@@ -8,7 +8,8 @@ class PlayerUI : Drawable {
         _player = player;
         _leftSide = leftSide;
 
-        // _icon = new Sprite(new Texture($"assets/textures/players/{player.Name}.png"));
+        _icon = new Sprite(new Texture($"assets/textures/characters/{player.Name}.png"));
+        _icon.Position = _leftSide ? new Vector2f(40f, 40f) : new Vector2f(940f, 40f);
         _healthBar = new RectangleShape();
         _healthBar.FillColor = Color.Red;
         _healthBar.Position = leftSide ? new Vector2f(50f, 0f) : new Vector2f(1150f, 0f);
@@ -41,7 +42,7 @@ class PlayerUI : Drawable {
     }
 
     public void Draw(RenderTarget target, RenderStates states) {
-        // target.Draw(_icon, states);
+        target.Draw(_icon, states);
         _healthBar.Size = new Vector2f((float)_player.Health / (float)_player.MaxHealth * 200f, 30f);
         _healthBar.Origin = new Vector2f(_leftSide ? 0f : _healthBar.Size.X, 0f);
 
@@ -53,9 +54,9 @@ class PlayerUI : Drawable {
         }
     }
 
-    Player _player;
-    bool _leftSide;
-    // private Sprite _icon;
+    private Player _player;
+    private bool _leftSide;
+    private Sprite _icon;
     private RectangleShape _healthBar;
     private Dictionary<RuneType, RectangleShape> _runeBars;
 

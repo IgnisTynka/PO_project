@@ -7,8 +7,8 @@ namespace Projekt;
 class GameLayer : Layer {
 
     public GameLayer() {
-        _player1 = new Player();
-        _player2 = new Player();
+        _player1 = new Player("Ezran");
+        _player2 = new Player("Viren");
         _playerSprite1 = new PlayerUI(_player1, true);
         _playerSprite2 = new PlayerUI(_player2, false);
         _board = new Board(_player1, _player2, new Vector2f(360, 113));
@@ -16,6 +16,14 @@ class GameLayer : Layer {
     }
 
     public override void Update(float deltaTime) {
+        if(_player1.Lose){
+            Application.Get().AddLayer(new VictoryLayer(_player2)); 
+            Application.Get().RemoveLayer(this); 
+        }
+        if(_player2.Lose){
+            Application.Get().AddLayer(new VictoryLayer(_player1));
+            Application.Get().RemoveLayer(this);  
+        }
         _board.Update(deltaTime);
     }
     public override bool OnEvent(Object? sender, EventType type, EventArgs args) {

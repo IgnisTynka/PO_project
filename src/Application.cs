@@ -13,6 +13,14 @@ class Application {
         return _instance;
     }
 
+    public void AddLayer(Layer layer) {
+        _addQueue.Enqueue(layer);
+    }
+
+    public void RemoveLayer(Layer layer) {
+        _removeQueue.Enqueue(layer);
+    }
+
     public void Run() {
         while (_running) {
             Update();
@@ -25,6 +33,12 @@ class Application {
     }
 
     private void Update() {
+        while(_addQueue.Count > 0){
+            _layers.Add(_addQueue.Dequeue());
+        }
+        while(_removeQueue.Count > 0){
+            _layers.Remove(_removeQueue.Dequeue());
+        }
         Time time = _clock.ElapsedTime;
         float deltaTime = (time - _time).AsSeconds();
         _time = time;
@@ -67,6 +81,9 @@ class Application {
 
         _layers = new List<Layer>();
         _layers.Add(new GameLayer());
+
+        _addQueue = new Queue<Layer>();
+        _removeQueue = new Queue<Layer>();
     }
 
     private void OnEvent(Object? sender, EventType type, EventArgs args) {
@@ -79,6 +96,8 @@ class Application {
     private static Application? _instance;
     private RenderWindow _window;
     private List<Layer> _layers;
+    private Queue<Layer> _addQueue;
+    private Queue<Layer> _removeQueue;
     private bool _running;
     private Clock _clock;
     private Time _time;
